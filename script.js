@@ -1,50 +1,28 @@
-// Memory boxes
-let timeLeft = 25 * 60; // 25 minutes in seconds
-let timerInterval = null;
-
-// Grab elements from HTML
-const timerDisplay = document.getElementById('timer');
-const startBtn = document.getElementById('start-btn');
-const pauseBtn = document.getElementById('pause-btn');
-const resetBtn = document.getElementById('reset-btn');
-
-// Convert raw seconds to MM:SS format
-function updateDisplay() {
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
-  
-  if (seconds < 10) {
-    seconds = '0' + seconds;
-  }
-  
-  timerDisplay.textContent = `${minutes}:${seconds}`;
+Afunction go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-// Start Button
-startBtn.addEventListener('click', function() {
-  if (timerInterval !== null) return;
-  
-  timerInterval = setInterval(function() {
-    if (timeLeft > 0) {
-      timeLeft--;
-      updateDisplay();
-    } else {
-      clearInterval(timerInterval);
-      alert('Time is up!');
-    }
+let time = 1500, interval = null;
+function update() {
+  const m = String(Math.floor(time/60)).padStart(2,'0');
+  const s = String(time%60).padStart(2,'0');
+  document.getElementById('timer').textContent = `${m}:${s}`;
+}
+function startTimer() {
+  if (interval) return;
+  interval = setInterval(() => {
+    if (time > 0) { time--; update(); }
+    else { clearInterval(interval); interval = null; }
   }, 1000);
-});
+}
+function resetTimer() {
+  clearInterval(interval); interval = null;
+  time = 1500; update();
+}
 
-// Pause Button
-pauseBtn.addEventListener('click', function() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-});
-
-// Reset Button
-resetBtn.addEventListener('click', function() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  timeLeft = 25 * 60;
-  updateDisplay();
-});
+document.getElementById('note').value = localStorage.getItem('note') || '';
+function saveNote() {
+  localStorage.setItem('note', document.getElementById('note').value);
+  alert('saved!');
+}
