@@ -9,6 +9,7 @@ function update() {
   const s = String(time%60).padStart(2,'0');
   document.getElementById('timer').textContent = `${m}:${s}`;
 }
+
 function startTimer() {
   if (interval) return;
   interval = setInterval(() => {
@@ -16,6 +17,7 @@ function startTimer() {
     else { clearInterval(interval); interval = null; }
   }, 1000);
 }
+
 function resetTimer() {
   clearInterval(interval); interval = null;
   time = 1500; update();
@@ -26,4 +28,3 @@ function saveNote() {
   localStorage.setItem('note', document.getElementById('note').value);
   alert('saved!');
 }
-
