@@ -24,7 +24,14 @@ function resetTimer() {
 }
 
 document.getElementById('note').value = localStorage.getItem('note') || '';
+// Load saved note on page load
+const noteText = document.getElementById('note');
+const savedDisplay = document.getElementById('saved-note-display');
+noteText.value = localStorage.getItem('note') || '';
+savedDisplay.innerText = noteText.value ? "Last saved: " + noteText.value : "";
+
 function saveNote() {
-  localStorage.setItem('note', document.getElementById('note').value);
-  alert('saved!');
+  localStorage.setItem('note', noteText.value);
+  // This updates the text on the screen instead of showing an alert
+  savedDisplay.innerText = "Last saved: " + noteText.value;
 }
