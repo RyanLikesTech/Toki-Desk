@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toki Desk</title>
+
   <!-- Loads the Courier Prime Font -->
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Connects your CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg1">
+
   <!-- PAGE 1: WELCOME -->
   <div class="page active" id="welcome">
     <div class="card">
       <h1>時 Toki Desk</h1>
       <p>Focus. Study. Get things done.</p>
       <p>Made by- Ryan and Alok</p>
+
       <div class="row">
         <button onclick="go('study')">Enter Study</button>
         <button onclick="go('notes')">Notes</button>
@@ -28,26 +33,12 @@
     <div class="card">
       <h2>Focus</h2>
       <div id="timer">25:00</div>
+
       <div class="row">
         <button onclick="startTimer()">Start</button>
         <button onclick="resetTimer()">Reset</button>
         <button onclick="go('welcome')">Back</button>
       </div>
-    </div>
-  </div>
-    <!-- PAGE 3: NOTES -->
-  <div class="page" id="notes">
-    <div class="card">
-      <h2>Notes</h2>
-      <textarea id="note" placeholder="write here..."></textarea>
-      <div class="row">
-        <button onclick="saveNote()">Save</button>
-        <button onclick="go('study')">Back</button>
-      </div>
-      
-      <!-- ADD THIS LINE BELOW -->
-      <div id="saved-note-display" style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.7);"></div>
-
     </div>
   </div>
 
@@ -56,14 +47,19 @@
     <div class="card">
       <h2>Notes</h2>
       <textarea id="note" placeholder="write here..."></textarea>
+
       <div class="row">
         <button onclick="saveNote()">Save</button>
         <button onclick="go('study')">Back</button>
       </div>
+
+      <!-- Shows the saved note -->
+      <div id="saved-note-display" style="margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.7);"></div>
     </div>
   </div>
 
   <!-- Connects your JavaScript -->
   <script src="script.js"></script>
+
 </body>
 </html>
